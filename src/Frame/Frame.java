@@ -1,7 +1,9 @@
 package Frame;
 
 import java.awt.EventQueue;
-
+import com.teamdev.jxbrowser.chromium.Browser;
+import com.teamdev.jxbrowser.chromium.swing.BrowserView;
+import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.Color;
@@ -12,11 +14,16 @@ import java.awt.event.ActionEvent;
 import java.awt.TextArea;
 import java.awt.Label;
 import java.awt.TextField;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Scene;
+import javafx.scene.web.WebView;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+import javax.swing.JScrollPane;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.TitledBorder;
@@ -154,5 +161,32 @@ public class Frame extends JFrame{
 		textArea_1.setBackground(Color.WHITE);
 		textArea_1.setBounds(392, 529, 1171, 230);
 		this.getContentPane().add(textArea_1);
+                
+                JPanel Pane1 = new javax.swing.JPanel();
+                Browser browser = new Browser();
+                BrowserView browserView = new BrowserView(browser);
+                Pane1.add(browserView, BorderLayout.CENTER);
+                Pane1.setBounds(300, 300, 800, 600);
+                Pane1.setVisible(true);
+                browser.loadURL("html/US_MAP/usa.html");
+                
+                
+                /*
+                JFXPanel jfxPanel = new JFXPanel(); // Scrollable JCompenent
+                Platform.runLater( () -> { // FX components need to be managed by JavaFX
+                WebView webView = new WebView();
+                webView.getEngine().load( "html/US_MAP/usa.html" );
+                jfxPanel.setScene( new Scene( webView ) );
+                jfxPanel.setBounds(0, 0, 800, 600);
+                
+                });
+                Pane1.add(jfxPanel);
+                Pane1.setBounds(392, 300, 800, 600);
+                Pane1.doLayout();
+                Pane1.setVisible(true);
+                System.out.println(jfxPanel);
+                //System.out.println(Pane1);
+                */
+                
 	}
 }
