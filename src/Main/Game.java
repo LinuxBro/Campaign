@@ -20,14 +20,15 @@ public class Game {
 
     private ArrayList<Candidate> people;
     private Territory[] terrs;
-    private Stack<Card> deck;
+    private Card[] deck;
     private boolean isFinished;
+    private Candidate curPlay;
 
     public Game(ArrayList<Candidate> people) {
         this.people = people;
         terrs = new Territory[50];
         genTerritory();
-        deck = new Stack<Card>();
+        deck = new Card[12];
         genCards();
     }
 
@@ -85,34 +86,28 @@ public class Game {
     }
     
     private void genCards(){
-        for(int i = 0; i < 25; i++){
-            Random r = new Random();
-            int type = r.nextInt(4);
-            switch(type){
-                case 0:
-                    deck.push(new BuffOpponent(null, null, 0, 0));
-                    break;
-                case 1:
-                    deck.push(new BuffSelf(null, null, 0, 0));
-                    break;
-                case 2:
-                    deck.push(new DebuffOpponent(null, null, 0, 0));
-                    break;
-                case 3:
-                    deck.push(new DebuffSelf(null, null, 0, 0));
-                    break;
-                default:
-                    deck.push(new BuffSelf(null, null, 0, 0));
-                    break;
-            }
-        }
+		deck[0] = new BuffSelf("Funds++", "Playing this card will increase your funds.", 8, 0);
+		deck[1] = new BuffSelf("Bump Pop", "Playing this card will increase your popularity.",  8,  1);
+		deck[2] = new BuffSelf("Cred Boost", "Playing this card will increase your credibility", 8, 2);
+		deck[3] = new DebuffSelf("Funds--", "Playing this card will decrease your funds.", 8, 0);
+		deck[4] = new DebuffSelf("Drop Pop", "Playing this card will decrease your popularity.", 8, 1);
+		deck[5] = new DebuffSelf("Cred Blow", "Playing this card will decrease your credibility", 8, 2);
+		deck[6] = new BuffOpponent("Funds++", "Playing this card will increase your opponenet's funds.", 8, 0);
+		deck[7] = new BuffOpponent("Bump Pop", "Playing this card will increase your opponent's popularity.", 8, 1);
+		deck[8] = new BuffOpponent("Cred Boost", "Playing this card will increase your opponent's credibility", 8, 2);
+		deck[9] = new DebuffOpponent("Funds--", "Playing this card will decrease your opponent's funds.", 8, 0);
+		deck[10] = new DebuffOpponent("Drop Pop", "Playing this card will decrease your opponent's popularity.", 8, 1);
+		deck[11] = new DebuffOpponent("Cred Blow", "Playing this card will decrease your opponent's credibility", 8, 2);
+		
+		for(int i= 0; i < deck.length; i++)
+			System.out.println(deck[i].getName());
     }
     
     public boolean isOver(){
         return isFinished;
     }
     
-    
+    //TODO Add popup window
     public void startTurn(){
         
     }
@@ -121,15 +116,42 @@ public class Game {
         c.addCard(deck.pop());
     }
     
-    public void makeMove(int type){
+    //0: Fundraise
+    //1: Play Card
+    //#
+    public void makeMove(Candidate c, int type){
         switch(type){
-            
+        case 0:
+        	c.setFunds(c.getFunds() + c.getPopularity() / 10 + 10);
+        	System.out.println("You now have $" + c.getFunds() + " to use");
+        	break;
+        case 1:
+        	for(int i = 0; i < c.getHand().length; i++){
+        		Card cd = c.getHand()[i];
+        		System.out.println("(" + (i+1) + ") " + cd.getName());
+        	}
+        	Scanner keyboard = new Scanner(System.in);
+        	int choice = Integer.parseInt(keyboard.nextLine());
+        	Card cardChoice = c.getHand()[choice];
+        	c.playCard(cardChoice);
+        	break;
+        case 2:
+        	Random r = new Random();
+        	int randNum = r.nextInt(50);
+        	c.setSwing(terrs[randNum], 5);
+        	break;
         }
     }
     
-    public void makeMove(Territory state)
+    
+    public void campaign(Territory state)
     {
         state.addSwing(5);
+    }
+    
+    public Candidate getCurPlayer()
+    {
+    	return curPlay;
     }
 
 }

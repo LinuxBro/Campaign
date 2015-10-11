@@ -2,13 +2,13 @@ package Cards;
 
 import java.util.*;
 import Candidate.*;
-
+import Territories.Territory;
 public class TerrorityCard extends Card
 {
 	HashMap<States, Integer> map = new HashMap<States, Integer>();
-	States terrority;
+	Territory terrority;
 	
-	public TerrorityCard(String name, String description, int strength, String terrority)
+	public TerrorityCard(String name, String description, int strength, Territory terrority)
 	{
 		super(name, description, strength);
 	}
@@ -20,6 +20,6 @@ public class TerrorityCard extends Card
 	
 	public void execute(Candidate can)
 	{
-		can.setSwings(terrority, strength);
+		can.setSwing(terrority, strength);
 	}
 }
