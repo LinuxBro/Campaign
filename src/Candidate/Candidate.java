@@ -123,6 +123,11 @@ public class Candidate
    public int getSwings(States abr)
    {
        return swings.get(abr);
+       
+   }
+   public HashMap getSwings(){
+       System.out.println(swings);
+       return swings;
    }
    
    public void setName(String name)
