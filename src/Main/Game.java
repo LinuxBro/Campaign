@@ -113,7 +113,7 @@ public class Game {
     }
     
     public void drawCard(Candidate c) throws Exception{
-        c.addCard(deck.pop());
+        //c.addCard(deck.pop());
     }
     
     //0: Fundraise

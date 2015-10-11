@@ -56,14 +56,14 @@ public class Frame extends JFrame{
 	/**
 	 * Create the application.
 	 */
-	public Frame() throws MalformedURLException {
+	public Frame(){
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the this.
 	 */
-	private void initialize() throws MalformedURLException {
+	private void initialize() {
 		//this = new JFrame();
 		this.getContentPane().setBackground(new Color(55, 124, 180));
 		this.setFont(new Font("Constantia", Font.PLAIN, 30));
@@ -109,7 +109,7 @@ public class Frame extends JFrame{
 		textArea.setBackground(new Color(246, 194, 103));
 		textArea.setFont(new Font("Constantia", Font.PLAIN, 20));
 		textArea.setEditable(false);
-		textArea.setBounds(15, 88, 633, 270);
+		textArea.setBounds(15, 88, 350, 270);
 		this.getContentPane().add(textArea);
 		
 		JLabel lblCardDisplay = new JLabel("                  Card Display");
@@ -161,7 +161,7 @@ public class Frame extends JFrame{
 		textArea_1.setFont(new Font("Constantia", Font.PLAIN, 20));
 		textArea_1.setEditable(false);
 		textArea_1.setBackground(Color.WHITE);
-		textArea_1.setBounds(392, 600, 1171, 150);
+		textArea_1.setBounds(382, 88, 392, 670);
 		this.getContentPane().add(textArea_1);
                 
                
