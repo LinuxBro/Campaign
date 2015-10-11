@@ -98,6 +98,7 @@ public class Game {
 		deck[9] = new DebuffOpponent("Funds--", "Playing this card will decrease your opponent's funds.", 8, 0);
 		deck[10] = new DebuffOpponent("Drop Pop", "Playing this card will decrease your opponent's popularity.", 8, 1);
 		deck[11] = new DebuffOpponent("Cred Blow", "Playing this card will decrease your opponent's credibility", 8, 2);
+<<<<<<< HEAD
 
 	}
 
@@ -191,5 +192,62 @@ public class Game {
 		}
 		return people.get(winner);
 	}
+=======
+		
+		for(int i= 0; i < deck.length; i++)
+			System.out.println(deck[i].getName());
+    }
+    
+    public boolean isOver(){
+        return isFinished;
+    }
+    
+    //TODO Add popup window
+    public void startTurn(){
+        
+    }
+    
+    public void drawCard(Candidate c) throws Exception{
+        //c.addCard(deck.pop());
+    }
+    
+    //0: Fundraise
+    //1: Play Card
+    //#
+    public void makeMove(Candidate c, int type){
+        switch(type){
+        case 0:
+        	c.setFunds(c.getFunds() + c.getPopularity() / 10 + 10);
+        	System.out.println("You now have $" + c.getFunds() + " to use");
+        	break;
+        case 1:
+        	for(int i = 0; i < c.getHand().length; i++){
+        		Card cd = c.getHand()[i];
+        		System.out.println("(" + (i+1) + ") " + cd.getName());
+        	}
+        	Scanner keyboard = new Scanner(System.in);
+        	int choice = Integer.parseInt(keyboard.nextLine());
+        	Card cardChoice = c.getHand()[choice];
+        	c.playCard(cardChoice);
+        	break;
+        case 2:
+        	Random r = new Random();
+        	int randNum = r.nextInt(50);
+        	c.setSwing(terrs[randNum], 5);
+        	break;
+        }
+    }
+    
+    
+    public void campaign(Territory state)
+    {
+        state.addSwing(5);
+    }
+    
+    public Candidate getCurPlayer()
+    {
+    	return curPlay;
+    }
+>>>>>>> origin/master
 
 }
