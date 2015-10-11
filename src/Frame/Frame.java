@@ -14,6 +14,8 @@ import java.awt.event.ActionEvent;
 import java.awt.TextArea;
 import java.awt.Label;
 import java.awt.TextField;
+import java.io.File;
+import java.net.MalformedURLException;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Scene;
@@ -54,14 +56,14 @@ public class Frame extends JFrame{
 	/**
 	 * Create the application.
 	 */
-	public Frame() {
+	public Frame() throws MalformedURLException {
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the this.
 	 */
-	private void initialize() {
+	private void initialize() throws MalformedURLException {
 		//this = new JFrame();
 		this.getContentPane().setBackground(new Color(55, 124, 180));
 		this.setFont(new Font("Constantia", Font.PLAIN, 30));
@@ -159,34 +161,15 @@ public class Frame extends JFrame{
 		textArea_1.setFont(new Font("Constantia", Font.PLAIN, 20));
 		textArea_1.setEditable(false);
 		textArea_1.setBackground(Color.WHITE);
-		textArea_1.setBounds(392, 529, 1171, 230);
+		textArea_1.setBounds(392, 600, 1171, 150);
 		this.getContentPane().add(textArea_1);
                 
-                JPanel Pane1 = new javax.swing.JPanel();
-                Browser browser = new Browser();
-                BrowserView browserView = new BrowserView(browser);
-                Pane1.add(browserView, BorderLayout.CENTER);
-                Pane1.setBounds(300, 300, 800, 600);
-                Pane1.setVisible(true);
-                browser.loadURL("html/US_MAP/usa.html");
+               
                 
                 
-                /*
-                JFXPanel jfxPanel = new JFXPanel(); // Scrollable JCompenent
-                Platform.runLater( () -> { // FX components need to be managed by JavaFX
-                WebView webView = new WebView();
-                webView.getEngine().load( "html/US_MAP/usa.html" );
-                jfxPanel.setScene( new Scene( webView ) );
-                jfxPanel.setBounds(0, 0, 800, 600);
                 
-                });
-                Pane1.add(jfxPanel);
-                Pane1.setBounds(392, 300, 800, 600);
-                Pane1.doLayout();
-                Pane1.setVisible(true);
-                System.out.println(jfxPanel);
-                //System.out.println(Pane1);
-                */
+                
+               
                 
 	}
 }
