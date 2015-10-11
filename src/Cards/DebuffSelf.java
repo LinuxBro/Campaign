@@ -19,13 +19,22 @@ public class DebuffSelf extends Card
 	
 	public void execute(Candidate can)
 	{
-		if(effect == 0)
+		if(effect == 0){
 			can.setFunds(can.getFunds() - (can.getPopularity() / 10 + strength));
+			System.out.println("After an unforunate event, your campgaign lost a lot of money");
+
+		}
 		
-		if(effect == 1)
+		if(effect == 1){
 			can.setPopularity(can.getPopularity() - strength);
+			System.out.println("After a political gaffe, your are now less popular");
+
+		}
 		
-		if(effect == 2)
+		if(effect == 2){
 			can.setCred(can.getCred() - (can.getPopularity() / 10 + strength));
+			System.out.println("After a particularly scathing interview, you are now less less credible");
+
+		}
 	}
 }

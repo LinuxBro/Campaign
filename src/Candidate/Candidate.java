@@ -169,6 +169,9 @@ public class Candidate
 	 */
 	public void setSwing(Territory terr, int strength)
 	{
+		popularity -= 2;
+		funds -= 2;
+		credibility += 1;
 		terr.addPlayerSwing(numPlayer, strength);
 /*		int temp;
 

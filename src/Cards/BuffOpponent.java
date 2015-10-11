@@ -19,13 +19,19 @@ public class BuffOpponent extends Card
 	
 	public void execute(Candidate can)
 	{
-		if(effect == 0)
-			can.setFunds(can.getFunds() + (can.getPopularity() / 10 + strength));
+		if(effect == 0){
+			can.setFunds(can.getFunds() + (can.getPopularity() / 10 + strength));			
+			System.out.println("Through some smart advertising, your opponent gains a lot of money.");
+		}
 		
-		if(effect == 1)
+		if(effect == 1){
 			can.setPopularity(can.getPopularity() + strength);
+			System.out.println("Your opponent interacts very well with their fans this week. The opponent is now more popular");
+		}
 		
-		if(effect == 2)
+		if(effect == 2){
 			can.setCred(can.getCred() + (can.getPopularity() / 10 + strength));
+			System.out.println("After unveiling new policy, your opponent gained credibility with the American populace");
+		}
 	}
 }

@@ -53,7 +53,7 @@ public class MainClass {
             }
 
         } while (newApp.isVisible());
-        f.setBounds(0, 0, 1600, 900);
+        f.setBounds(0, 0, 1600, 1000);
         f.setVisible(true);
         map.setUndecorated(true);
         Thread t = Thread.currentThread();

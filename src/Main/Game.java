@@ -127,28 +127,38 @@ public class Game {
 		switch(type){
 		case 0:
 			c.setFunds(c.getFunds() + c.getPopularity() / 10 + 10);
+			
 			System.out.println("You now have $" + c.getFunds() + " to use");
 			break;
 		case 1:
-			for(int i = 0; i < c.getHand().length; i++){
+			int j = 0;
+			int cards = 0;
+			for(j = 0; j < c.getHand().length; j++){
 				Card[] hand = c.getHand();
-				Card cd = hand[i];
+				Card cd = hand[j];
 				if(cd != null){
-					System.out.println("(" + (i+1) + ") " + cd.getName());
+					System.out.println("(" + (j+1) + ") " + cd.getName());
+					cards++;
 				}
 			}
+			System.out.println("(" + (cards+1) + ") Go Back");
 			choice = Integer.parseInt(keyboard.nextLine());
+			System.out.println(choice == (cards+1));
+			if(choice == cards+1){
+				return;
+			}
 			Card cardChoice = c.getHand()[choice-1];
 			c.playCard(cardChoice);
 			break;
 		case 2:
-			System.out.println("Which state do you want to view info for?");
+			System.out.println("Which state do you want to campaign in?");
 			for(int i = 0; i < terrs.length; i++){
 				System.out.println("(" + (i + 1) + ") " + terrs[i].getAbr());
 			}
 			choice = Integer.parseInt(keyboard.nextLine());
 			t = terrs[choice - 1];
 			c.setSwing(t, 5);
+			c.setPopularity(c.getPopularity() + 1);
 			break;
 		case 3:
 			System.out.println("Which state do you want to view info for?");
@@ -158,10 +168,14 @@ public class Game {
 			choice = Integer.parseInt(keyboard.nextLine());
 			t = terrs[choice - 1];
 			for(int i = 0; i < people.size(); i++){
-				System.out.println("Player " + (i+1) + ": " + t.getPlayerSwing(i+1));
+				System.out.println(people.get(i).getName() + ": " + t.getPlayerSwing(i+1));
 			}
+			System.out.println("Leader: " + people.get(t.findWinner()).getName());
+			break;
+		default:
 			break;
 		}
+		keyboard.close();
 	}
 
 
@@ -173,6 +187,24 @@ public class Game {
 	public Candidate getCurPlayer()
 	{
 		return curPlay;
+	}
+	
+	/*public ArrayList<Candidate> currentStandings(){
+		
+		for(int i = 0; i < people.size(); i++){
+			int points = getCurrentTotal(i);
+		}
+	}*/
+	
+	public int getCurrentTotal(int candNum){
+		int score = 0;
+		for(Territory t : terrs){
+			int winner = t.findWinner();
+			if(winner == candNum){
+				score += t.getVotes();
+			}
+		}
+		return score;
 	}
 	
 	public Candidate tally(){
