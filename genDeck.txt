@@ -1,0 +1,27 @@
+import java.util.ArrayList;
+
+import javax.smartcardio.Card;
+
+public class genDeck {
+	
+	private ArrayList<Card> deck = new ArrayList<Card>();
+	
+	public void genDeck(){
+		deck.add(new BuffSelf("Funds++", "Playing this card will increase your funds.", int 8, int 0));
+		deck.add(new BuffSelf("Bump Pop", "Playing this card will increase your popularity.", int 8, int 1));
+		deck.add(new BuffSelf("Cred Boost", "Playing this card will increase your credibility", int 8, int 2));
+		deck.add(new DebuffSelf("Funds--", "Playing this card will decrease your funds.", int 8, int 0));
+		deck.add(new DebuffSelf("Drop Pop", "Playing this card will decrease your popularity.", int 8, int 1));
+		deck.add(new DebuffSelf("Cred Blow", "Playing this card will decrease your credibility", int 8, int 2));
+		deck.add(new BuffOpponent("Funds++", "Playing this card will increase your opponenet's funds.", int 8, int 0));
+		deck.add(new BuffOpponent("Bump Pop", "Playing this card will increase your opponent's popularity.", int 8, int 1));
+		deck.add(new BuffOpponent("Cred Boost", "Playing this card will increase your opponent's credibility", int 8, int 2));
+		deck.add(new DebuffOpponent("Funds--", "Playing this card will decrease your opponent's funds.", int 8, int 0));
+		deck.add(new DebuffOpponent("Drop Pop", "Playing this card will decrease your opponent's popularity.", int 8, int 1));
+		deck.add(new DebuffOpponent("Cred Blow", "Playing this card will decrease your opponent's credibility", int 8, int 2));
+	}
+	
+	
+
+
+}
