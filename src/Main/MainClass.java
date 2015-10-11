@@ -20,18 +20,6 @@ import javax.swing.JFrame;
  * @author airking
  */
 public class MainClass {
-<<<<<<< HEAD
-    
-    public static void main(String[] args){
-        NewApplication newApp = new NewApplication();
-        Frame f = null;
-        try{
-        	f = new Frame();
-        } catch(MalformedURLException e){
-        	System.out.println(e.getMessage());
-        }
-=======
-
     public static void main(String[] args) throws InterruptedException {
         NewApplication newApp = new NewApplication();
         Frame f = new Frame();
@@ -41,7 +29,7 @@ public class MainClass {
         map.setSize(800, 600);
         map.add(m);
 
->>>>>>> origin/master
+
         ArrayList<Candidate> candidates = new ArrayList<Candidate>();
         candidates.add(new Candidate("Player 1", 0, 1));
         candidates.add(new Candidate("Player 2", 0, 2));
@@ -63,11 +51,7 @@ public class MainClass {
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
             }
-<<<<<<< HEAD
-        }while(newApp.isVisible());
-        f.setVisible(true);
-            
-=======
+
         } while (newApp.isVisible());
         f.setBounds(0, 0, 1600, 900);
         f.setVisible(true);
@@ -93,7 +77,6 @@ public class MainClass {
         map.setVisible(true);
         map.setAlwaysOnTop(true);
 
->>>>>>> origin/master
         Game game = new Game(candidates);
 
         while (game.isOver()) {

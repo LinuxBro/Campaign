@@ -98,7 +98,7 @@ public class Game {
 		deck[9] = new DebuffOpponent("Funds--", "Playing this card will decrease your opponent's funds.", 8, 0);
 		deck[10] = new DebuffOpponent("Drop Pop", "Playing this card will decrease your opponent's popularity.", 8, 1);
 		deck[11] = new DebuffOpponent("Cred Blow", "Playing this card will decrease your opponent's credibility", 8, 2);
-<<<<<<< HEAD
+
 
 	}
 
@@ -191,8 +191,8 @@ public class Game {
 			}
 		}
 		return people.get(winner);
-	}
-=======
+	}}
+/*======
 		
 		for(int i= 0; i < deck.length; i++)
 			System.out.println(deck[i].getName());
@@ -251,3 +251,6 @@ public class Game {
 >>>>>>> origin/master
 
 }
+/*
+        }
+        */
