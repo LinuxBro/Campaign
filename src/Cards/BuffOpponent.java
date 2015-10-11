@@ -2,11 +2,11 @@ package Cards;
 
 import Candidate.*;
 
-public class DebuffOpponet extends Card
+public class BuffOpponent extends Card
 {
 	int effect;		//0 is funds, 1 is popularity, 2 is credibility
 	
-	public DebuffOpponet(String name, String description, int strength, int effect)
+	public BuffOpponent(String name, String description, int strength, int effect)
 	{
 		super(name, description, strength);
 		this.effect = effect;
@@ -20,12 +20,12 @@ public class DebuffOpponet extends Card
 	public void execute(Candidate can)
 	{
 		if(effect == 0)
-			can.setFunds(can.getFunds() - (can.getPopularity() / 10 + strength));
+			can.setFunds(can.getFunds() + (can.getPopularity() / 10 + strength));
 		
 		if(effect == 1)
-			can.setPopularity(can.getPopularity() - strength);
+			can.setPopularity(can.getPopularity() + strength);
 		
 		if(effect == 2)
-			can.setCred(can.getCred() - (can.getPopularity() / 10 + strength));
+			can.setCred(can.getCred() + (can.getPopularity() / 10 + strength));
 	}
 }

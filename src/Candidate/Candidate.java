@@ -120,6 +120,10 @@ public class Candidate
        return this.hand[n-1];
    }
    
+   public Card[] getHand(){
+       return this.hand;
+   }
+   
    public int getSwings(States abr)
    {
        return swings.get(abr);
@@ -168,5 +172,15 @@ public class Candidate
 	   temp = swings.get(terr) + popularity / 20 + strength;
 	   swings.remove(terr);
 	   swings.put(terr, temp);
+   }
+   
+   public void addCard(Card c) throws Exception{
+       for(int i = 0 ; i < hand.length; i++){
+           if(hand[i] == null){
+               hand[i] = c;
+               return;
+           }
+       }
+       throw new Exception("Hand full");
    }
 }
