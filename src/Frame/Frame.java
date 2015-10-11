@@ -1,8 +1,6 @@
 package Frame;
 
 import java.awt.EventQueue;
-import com.teamdev.jxbrowser.chromium.Browser;
-import com.teamdev.jxbrowser.chromium.swing.BrowserView;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JButton;

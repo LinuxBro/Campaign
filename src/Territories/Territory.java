@@ -8,12 +8,17 @@ public class Territory
 	States abr; 
 	int totalSwing;
 	int votes;
-	int[] playerSwings = {1, 1, 1};
+	int[] playerSwings;
 
-	public Territory(States name, int votes)
+	public Territory(States name, int votes, int numPlayers)
 	{
 		this.abr = name;
 		this.votes = votes;
+		this.totalSwing = numPlayers;
+		playerSwings = new int[numPlayers];
+		for(int i = 0; i < playerSwings.length; i++){
+			playerSwings[i] = 1;
+		}
 	}
 
 	public void addSwing(int swing)
@@ -46,5 +51,19 @@ public class Territory
 	
 	public void addPlayerSwing(int pNum, int amt){
 		playerSwings[pNum - 1] = playerSwings[pNum - 1] + amt;
+	}
+	
+	public int getPlayerSwing(int pNum){
+		return playerSwings[pNum - 1];
+	}
+	
+	public int findWinner(){
+		int winner = 0;
+		for(int i = 1; i < playerSwings.length; i++){
+			if(playerSwings[i] > winner){
+				winner = i;
+			}
+		}
+		return winner;
 	}
 }

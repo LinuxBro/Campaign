@@ -7,6 +7,8 @@ package Main;
 
 import Candidate.*;
 import Frame.*;
+
+import java.net.MalformedURLException;
 import java.util.*;
 import Cards.*;
 import Territories.*;
@@ -18,9 +20,13 @@ import Territories.*;
 public class MainClass {
     
     public static void main(String[] args){
-        NewApplication newApp = new NewApplication();        
-        Frame f = new Frame();
-
+        NewApplication newApp = new NewApplication();
+        Frame f = null;
+        try{
+        	f = new Frame();
+        } catch(MalformedURLException e){
+        	System.out.println(e.getMessage());
+        }
         ArrayList<Candidate> candidates = new ArrayList<Candidate>();
         candidates.add(new Candidate("Player 1", 0, 1));
         candidates.add(new Candidate("Player 2", 0, 2));
@@ -43,7 +49,7 @@ public class MainClass {
                 System.out.println(e.getMessage());
             }
         }while(newApp.isVisible());
-            f.setVisible(true);
+        f.setVisible(true);
             
         Game game = new Game(candidates);
         

@@ -45,7 +45,7 @@ public class CLITest {
 		
 		for(int i = 0; i < 100; i++){
 			for(int currentPlayer = 0; currentPlayer < numPlayers; currentPlayer++){
-				System.out.println("Player " + currentPlayer + 1 + ", are you ready?");
+				System.out.println("Player " + (currentPlayer + 1) + ", are you ready?");
 				keyboard.nextLine();
 				Candidate player = players.get(currentPlayer);
 				try{
@@ -53,15 +53,20 @@ public class CLITest {
 				} catch(Exception e){
 					System.out.println("Your hand is full, you don't get a card, bitch ass!");
 				}
-				System.out.println("Player " + currentPlayer + 1 + ", what do you want to do?\n(1) Fundraise\n(2) Campaign\n(3) Play a Card");
+				System.out.println("Player " + (currentPlayer + 1) + ", what do you want to do?\n(1) Fundraise\n(2) Play a Card\n(3) Campaign\n(4) View Stats");
 				int choice = Integer.parseInt(keyboard.nextLine());
-				while(choice <= 0 || choice > 3){
+				while(choice <= 0 || choice > 4){
 					System.out.println("Goddammit enter a valid number, bitch ass!!");
 				}
 				game.makeMove(player, choice - 1);
+				if(choice == 4){
+					currentPlayer--;
+				}
 			}
+
 		}
-		
+		Candidate winner = game.tally();
+		System.out.println(winner.getName());
 		keyboard.close();
 
 	}
